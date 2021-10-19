@@ -1,6 +1,6 @@
 {
   "Roles": [{
 		"Name": "djangohw",
-		"DockerImage": "duplocloud/anyservice:<hubtag>",
+		"DockerImage": "duplocloud/anyservice:<hubtag>"
   }]
 }
