@@ -33,7 +33,7 @@ spec:
           bash '''
             #!/bin/bash
             docker-compose build
-         ''
+         '''
        }
     }   
   }
