@@ -9,7 +9,7 @@ kind: Pod
 spec:
   containers:
   - name: docker
-    image: duplocloud/jenkins:slave-1.1
+    image: duplocloud/jenkins:slave-1.2
     command: ['cat']
     tty: true
     volumeMounts:
