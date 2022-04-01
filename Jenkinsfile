@@ -33,8 +33,7 @@ spec:
        steps {
           sh '''
             #!/bin/bash
-            ls -ltr /usr/bin/docker-compose
-            /usr/bin/docker-compose build
+            docker-compose build
          '''
        }
     }   
