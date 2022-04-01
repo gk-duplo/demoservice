@@ -60,7 +60,7 @@ spec:
     stage('Update demo service'){
          steps{
           dcDeploy( [ 
-                   tenant: "Dev02",  
+                   tenant: "dev02",  
                    service: [
                          image: "399155979869.dkr.ecr.us-east-1.amazonaws.com/jenkins-test:${env.BUILD_NUMBER}", 
                          name: "demo"]
