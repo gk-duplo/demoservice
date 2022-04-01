@@ -15,6 +15,7 @@ spec:
     volumeMounts:
     - name: dockersock
       mountPath: /var/run/docker.sock
+    imagePullPolicy: Always
   volumes:
   - name: dockersock
     hostPath:
