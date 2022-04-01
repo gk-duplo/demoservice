@@ -23,14 +23,8 @@ spec:
     }
   }
   stages {
-    def app     
-      stage('Clone repository') {               
-             
+    stage('Clone repository') {               
             checkout scm    
-      }     
-      
-
+      }   
   }
 }
-
-	
