@@ -5,14 +5,21 @@ node {
             checkout scm    
       }     
       stage('Build image') {         
-       
-            app = docker.build("gkhakare/demoservice")    
+        steps {
+               bash '''
+                  #!/bin/bash
+                  docker-compose build
+               ''
+            }     
        }     
      
        stage('Push image') {
-            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-hub-ganesh') {            
-                app.push("${env.BUILD_NUMBER}")            
-                app.push("latest")        
-            }    
+            steps {
+               bash '''
+                  #!/bin/bash
+                  aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 399155979869.dkr.ecr.us-east-1.amazonaws.com
+                  docker-compose push
+               ''
+            }       
        }
 }
