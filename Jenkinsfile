@@ -32,7 +32,7 @@ spec:
     stage('Build Containers') {        
        steps {
           sh '''
-            #!/bin/sh
+            #!/bin/bash
             docker-compose build
          '''
        }
