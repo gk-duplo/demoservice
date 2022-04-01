@@ -28,7 +28,7 @@ spec:
           checkout scm
        }
     }   
-    stage('Clone repository') {        
+    stage('Build Containers') {        
        steps {
           bash '''
             #!/bin/bash
