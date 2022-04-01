@@ -33,15 +33,38 @@ spec:
        steps {
           container('docker') {
              sh '''
-                ls -ltr
+                echo "===== Build Containers ===="
                 docker-compose build
+             '''
+          }
+         
+       }
+    }  
+
+    stage('Publish Docker containers') {        
+       steps {
+          container('docker') {
+             sh '''
+                echo "===== Docker login ===="
                 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 399155979869.dkr.ecr.us-east-1.amazonaws.com
                   docker-compose push
+                echo "===== Push Containers ===="
                 docker-compose push
              '''
           }
          
        }
-    }   
+    }  
+
+    stage('Update demo service'){
+         sreps{
+            service =  dcDeploy( [ 
+                   tenant: "Dev02",  
+                   service: [
+                         image: "399155979869.dkr.ecr.us-east-1.amazonaws.com/jenkins-test:${env.BUILD_NUMBER}", 
+                         name: "demo"]
+                  ])
+         }
+       }
   }
 }
