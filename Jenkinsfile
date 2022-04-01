@@ -1,3 +1,4 @@
+@library('pipeline-library-duplocloud') _
 pipeline {
   agent {
     kubernetes {
