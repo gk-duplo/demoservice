@@ -57,7 +57,7 @@ spec:
     }  
 
     stage('Update demo service'){
-         sreps{
+         steps{
             service =  dcDeploy( [ 
                    tenant: "Dev02",  
                    service: [
