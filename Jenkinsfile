@@ -24,9 +24,17 @@ spec:
   }
   stages {
     stage('Clone repository') {        
-         steps {
-            checkout scm
-         }
-      }   
+       steps {
+          checkout scm
+       }
+    }   
+    stage('Clone repository') {        
+       steps {
+          bash '''
+            #!/bin/bash
+            docker-compose build
+         ''
+       }
+    }   
   }
 }
