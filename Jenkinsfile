@@ -34,6 +34,16 @@ spec:
     }
   
   stages {
+     stage('Initialize the variables') {
+             def jsonString = '${TENANT_DATA}'
+             def jsonObj = readJSON text: jsonString
+            // Each stage is made up of steps
+            steps{
+                script{
+                    DB_ENDPOINT=jsonObj.endpoint
+                }
+            }                
+        }
     stage('Clone repository') {        
        steps {
           checkout scm
@@ -44,7 +54,7 @@ spec:
           container('docker') {
              sh '''
                 echo "===== Build Containers ===="
-                echo "${TENANT_DATA}"
+                echo "DB Endpoint: ${DB_ENDPOINT}"
                 docker-compose build
              '''
           }
