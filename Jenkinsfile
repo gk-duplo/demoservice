@@ -24,9 +24,7 @@ spec:
 """
     }
   }
-  parameters {
-        string(name: 'ENV', defaultValue: 'dev02', description: 'tenant name or env name')
-    }
+  
   stages {
     stage('Clone repository') {        
        steps {
