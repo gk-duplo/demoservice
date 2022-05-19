@@ -29,7 +29,7 @@ spec:
   }
   
   environment {
-      TENANT_DATA     = credentials('${params.ENV}')
+      TENANT_DATA     = credentials("${params.ENV}")
     
     }
   
