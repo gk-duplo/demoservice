@@ -24,6 +24,14 @@ spec:
 """
     }
   }
+  parameters {
+      string(name: 'ENV', defaultValue: 'dev02', description: 'tenant name or env name')
+  }
+  
+  environment {
+      TENANT_DATA     = credentials('${params.ENV}')
+    
+    }
   
   stages {
     stage('Clone repository') {        
@@ -36,6 +44,7 @@ spec:
           container('docker') {
              sh '''
                 echo "===== Build Containers ===="
+                echo "${TENANT_DATA}"
                 docker-compose build
              '''
           }
