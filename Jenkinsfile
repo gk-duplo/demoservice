@@ -8,6 +8,9 @@ pipeline {
 apiVersion: v1
 kind: Pod
 spec:
+  nodeSelector:
+    allocationtags: slave
+    tenantname: duploservices-tools
   containers:
   - name: docker
     image: duplocloud/jenkins:slave-1.3
