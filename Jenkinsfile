@@ -1,32 +1,6 @@
 library 'pipeline-library-duplocloud'
 pipeline {
-  agent {
-    kubernetes {
-      //cloud 'kubernetes'
-      label 'mypod'
-      yaml """
-apiVersion: v1
-kind: Pod
-spec:
-  nodeSelector:
-    allocationtags: slave
-    tenantname: duploservices-tools
-  containers:
-  - name: docker
-    image: duplocloud/jenkins:slave-1.3
-    command: ['cat']
-    tty: true
-    volumeMounts:
-    - name: dockersock
-      mountPath: /var/run/docker.sock
-    imagePullPolicy: Always
-  volumes:
-  - name: dockersock
-    hostPath:
-      path: /var/run/docker.sock
-"""
-    }
-  }
+  
   parameters {
       string(name: 'ENV', defaultValue: 'dev02', description: 'tenant name or env name')
   }
