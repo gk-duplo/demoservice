@@ -34,16 +34,7 @@ spec:
     }
   
   stages {
-     stage('Initialize the variables') {
-             def jsonString = '${TENANT_DATA}'
-             def jsonObj = readJSON text: jsonString
-            // Each stage is made up of steps
-            steps{
-                script{
-                    DB_ENDPOINT=jsonObj.endpoint
-                }
-            }                
-        }
+
     stage('Clone repository') {        
        steps {
           checkout scm
